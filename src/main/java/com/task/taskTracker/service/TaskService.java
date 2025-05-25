@@ -72,4 +72,7 @@ public class TaskService {
     private void printTask(Task task){
         System.out.printf("ID: %d | [%s] %s\n", task.getId(), task.getStatus().toUpperCase(), task.getDescription());
     }
+    public List<Task> findByStatus(String status){
+        return repo.findAll().stream().filter(task -> status.equals("all") || task.getStatus().equalsIgnoreCase(status) ).toList();
+    }
 }
